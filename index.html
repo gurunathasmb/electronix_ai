@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Binary Sentiment Analysis</title>
+</head>
+<body>
+  <h2>Binary Sentiment Analysis</h2>
+  <textarea id="inputText" rows="5" cols="50" placeholder="Enter your text..."></textarea><br>
+  <button onclick="analyze()">Analyze Sentiment</button>
+  <h3 id="result"></h3>
+
+  <script>
+    async function analyze() {
+      const text = document.getElementById('inputText').value;
+      const res = await fetch('http://127.0.0.1:8000/predict', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ text })
+      });
+      const data = await res.json();
+      document.getElementById('result').innerText = `Sentiment: ${data.sentiment}`;
+    }
+  </script>
+</body>
+</html>
