@@ -22,17 +22,14 @@ This project does **not** use any pretrained models – the sentiment classifier
 ```
 electronix_ai/
 │
-├── app/
+├── backend
 │   ├── main.py               # Flask API
 │   ├── routes/predict.py     # Inference logic
 │   └── model/                # Trained model & vectorizer
-│
-├── dataset/
-│   └── sentiment_dataset.jsonl  # Labeled dataset
-│
-├── train/
-│   ├── generate_dataset.py   # Generate synthetic data
-│   └── train_model.py        # Train sentiment model
+│   └── data/
+│       └── data.jsonl  # Labeled dataset
+│   ├── dataset.py   # Generate synthetic data
+│   └── finetune.py        # Train sentiment model
 │
 ├── Dockerfile
 ├── requirements.txt
@@ -56,6 +53,7 @@ cd electronix_ai
 ```bash
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
+cd backend
 ```
 
 ### 3. Install dependencies
@@ -67,7 +65,7 @@ pip install -r requirements.txt
 ### 4. (Optional) Generate custom dataset
 
 ```bash
-python train/generate_dataset.py --count 5000
+python dataset.py --count 5000
 ```
 
 ### 5. Train the model
@@ -79,7 +77,7 @@ python train/train_model.py
 ### 6. Start the microservice
 
 ```bash
-python app/main.py
+python main.py
 ```
 
 Runs on: `http://localhost:5000`
