@@ -5,7 +5,6 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-# Allow CORS for local testing
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -13,15 +12,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Load sentiment model
+
 sentiment_pipeline = pipeline("sentiment-analysis")
 
-# Input model
 class TextInput(BaseModel):
     text: str
 
 @app.post("/predict")
 async def predict_sentiment(data: TextInput):
     result = sentiment_pipeline(data.text)[0]
-    label = result['label']  # POSITIVE or NEGATIVE
+    label = result['label']  
     return {"sentiment": label}
