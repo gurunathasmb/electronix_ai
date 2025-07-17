@@ -1,4 +1,5 @@
 # 🚀 Electronix AI – Microservice Sentiment Analysis
+![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)
 
 A lightweight and efficient **Sentiment Analysis Microservice** built from scratch by **Gurunatha Gouda**. This microservice is a part of the **Electronix AI** project, designed for modular AI-based services that are easy to integrate and deploy.
 
